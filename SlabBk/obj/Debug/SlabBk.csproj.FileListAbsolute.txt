@@ -10,3 +10,10 @@ c:\users\alex chang\documents\visual studio 2015\Projects\SlabBk\SlabBk\obj\Debu
 C:\Users\Alex Chang\Documents\GitHub\SlabBkp\SlabBk\bin\Debug\SlabBk.exe.config
 C:\Users\Alex Chang\Documents\GitHub\SlabBkp\SlabBk\obj\Debug\SlabBk.exe
 C:\Users\Alex Chang\Documents\GitHub\SlabBkp\SlabBk\obj\Debug\SlabBk.pdb
+C:\Users\Alex Chang\Documents\GitHub\SlabBkp\SlabBk\bin\Debug\SlabBk.exe
+C:\Users\Alex Chang\Documents\GitHub\SlabBkp\SlabBk\bin\Debug\SlabBk.pdb
+C:\Users\Alex Chang\Documents\GitHub\SlabBkp\SlabBk\bin\Debug\System.Net.Http.dll
+C:\Users\Alex Chang\Documents\GitHub\SlabBkp\SlabBk\bin\Debug\System.Net.Http.xml
+C:\Users\Alex Chang\Documents\GitHub\SlabBkp\SlabBk\bin\Debug\pt-br\System.Net.Http.resources.dll
+C:\Users\Alex Chang\Documents\GitHub\SlabBkp\SlabBk\obj\Debug\SlabBk.csprojResolveAssemblyReference.cache
+C:\Users\Alex Chang\Documents\GitHub\SlabBkp\SlabBk\bin\Debug\SlabBkp.exe.config

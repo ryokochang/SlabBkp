@@ -7,8 +7,8 @@
     <ProjectGuid>{CB749392-5910-4AF6-AC7E-A29D5761EFD1}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SlabBk</RootNamespace>
-    <AssemblyName>SlabBk</AssemblyName>
+    <RootNamespace>SlabBkp</RootNamespace>
+    <AssemblyName>SlabBkp</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FileUtil.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
