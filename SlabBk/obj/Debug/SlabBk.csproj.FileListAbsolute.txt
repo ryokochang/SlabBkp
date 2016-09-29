@@ -7,3 +7,6 @@ c:\users\alex chang\documents\visual studio 2015\Projects\SlabBk\SlabBk\bin\Debu
 c:\users\alex chang\documents\visual studio 2015\Projects\SlabBk\SlabBk\obj\Debug\SlabBk.csprojResolveAssemblyReference.cache
 c:\users\alex chang\documents\visual studio 2015\Projects\SlabBk\SlabBk\obj\Debug\SlabBk.exe
 c:\users\alex chang\documents\visual studio 2015\Projects\SlabBk\SlabBk\obj\Debug\SlabBk.pdb
+C:\Users\Alex Chang\Documents\GitHub\SlabBkp\SlabBk\bin\Debug\SlabBk.exe.config
+C:\Users\Alex Chang\Documents\GitHub\SlabBkp\SlabBk\obj\Debug\SlabBk.exe
+C:\Users\Alex Chang\Documents\GitHub\SlabBkp\SlabBk\obj\Debug\SlabBk.pdb
