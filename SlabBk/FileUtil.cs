@@ -8,60 +8,79 @@ namespace SlabBkp
 {
     static class FileUtil
     {
-        public static void (string souceDir, char unit)
+        // ve se a pasta existe se não cria a pasta oculta e retorna o diretorio.
+        public static string newHiddenFolder (string sourceDir)
             {
+                if (!System.IO.Directory.Exists(sourceDir))
+                {
+                System.IO.Directory.CreateDirectory(sourceDir);
+                DirectoryInfo diretorio = Directory.CreateDirectory(sourceDir);
+                diretorio.Attributes = FileAttributes.Hidden;
+                return sourceDir;
+                }
+            return sourceDir;
+
+        }
+
+        //função que verificar se o diretorio existem em todas as unidades e retorna o a letra da unidade caso o diretorio exista, caso não exista retorna A <- unidade que não existe.
+        public static char findUnitFolder(string sourceDir)
+        {
+            char[] Unidade = new Char[23] {'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K',
+                                           'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S',
+                                           'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
+
+            for (int i = 0; i < 23; i++)
+            {
+                string Usbfolder = String.Format("{0}:\\{1}", Unidade[i], sourceDir);
+                Console.WriteLine("{0}:\\{1}", Unidade[i], sourceDir);
+
+                if (System.IO.Directory.Exists(Usbfolder))
+                {
+                    Console.WriteLine("{0}", Unidade[i]);
+                    return Unidade[i];
+                }
 
             }
+            return 'A';
+        }
 
         // Essa função verifica os drives disponíveis
         // e chama a função para extrair o conteúdo da APM, caso
         // ela exista. 
         //
         // Os drives procurados são de D - Z
-        public static void copyFilesFromUsb()
+        public static void copyFilesFromUsb(char unit, string folderName, string newSource)
         {
-            string Mpfolder = @"C:\\logs_gravados"; //caminho da pasta no C
-            char[] Unidade = new Char[23] {'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K',
-                                           'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S',
-                                           'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
-            // ve se a pasta existe se não cria a pasta
-            if (!System.IO.Directory.Exists(Mpfolder))
+            string rootFolder = string.Format("{0}:\\{1}", unit, folderName);
+            Console.WriteLine("{0}", rootFolder);
+            string file = string.Format("{0}:\\{1}\\LOGS\\1.BIN", unit, folderName);
+            FileInfo file_info = new FileInfo(file);
+            string dataCriacao = file_info.CreationTime.ToString("dd_MM_yyyy-HH_mm_ss");
+            string novaPasta = string.Format("{0}\\{1}", newSource, dataCriacao);
+            Console.WriteLine("{0}", novaPasta);
+            if (!System.IO.Directory.Exists(novaPasta))
             {
-                System.IO.Directory.CreateDirectory(Mpfolder); //cria pasta principal no C
-                DirectoryInfo diretorio = Directory.CreateDirectory(@"C:\\logs_gravados"); // pega info da pasta
-                diretorio.Attributes = FileAttributes.Hidden; // depois deixa ela oculta
-                Console.WriteLine("pasta criada");
-            }
-            else Console.WriteLine("pasta já existe");
-
-
-            for (int i = 0; i < 23; i++)
-            {
-                Console.WriteLine("{0}", Unidade[i]);
-                string Usbfolder = String.Format("{0}:\\APM", Unidade[i]);
-
-                if (System.IO.Directory.Exists(Usbfolder))
-                {
-                    string file = String.Format("{0}\\LOGS\\1.BIN", Usbfolder);
-                    FileInfo file_info = new FileInfo(file);
-                    string Criado = file_info.CreationTime.ToString("dd_MM_yyyy-HH_mm_ss"); //pega a data de criação do arquivo
-
-                    Console.WriteLine("pasta existe e vai ser copiada");
-
-                    string Newfolder = String.Format("C:\\logs_gravados\\{0}", Criado);
-                    Console.WriteLine("{0}", Criado);
-                    if (!System.IO.Directory.Exists(Newfolder))
-                    {
-                        System.IO.Directory.CreateDirectory(Newfolder); //cria a nova pasta no C
-                        FileUtil.DirectoryCopy(Usbfolder, Newfolder, true); // chama a funcao DirectoryCopy
-                    }
-                    Console.WriteLine("{0}", Newfolder);
-                }
-                Console.WriteLine("{0}", Usbfolder);
+                System.IO.Directory.CreateDirectory(novaPasta);
+                DirectoryCopy(rootFolder, novaPasta, true);
             }
         }
+            /*
+                        string file = String.Format("{0}:\\{0}\\LOGS\\1.BIN", unit, folderName);
+                        FileInfo file_info = new FileInfo(file);
+                        string novoNome = file_info.CreationTime.ToString("dd_MM_yyyy-HH_mm_ss"); //pega a data de criação do arquivo
 
+                                Console.WriteLine("pasta existe e vai ser copiada");
 
+                                string Newfolder = String.Format("{0}:\\{0}\\{0}", unit, newSource, novoNome);
+                                Console.WriteLine("{0}", novoNome);
+                                if (System.IO.Directory.Exists(Newfolder))
+                                {
+                                    System.IO.Directory.CreateDirectory(newSource); //cria a nova pasta no C
+                                    FileUtil.DirectoryCopy(folderName, newSource, true); // chama a funcao DirectoryCopy
+                                }
+                            Console.WriteLine("{0}", folderName);
+            */
+        
         // Esta função copia todos os arquivos e caso for necessário  
         // também copia as pastas e sub pastas de um diretório
         //para um destino

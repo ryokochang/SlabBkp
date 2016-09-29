@@ -21,8 +21,14 @@ namespace SlabBkp
             // Fica eternamente executando com intervalo de 10 segundos
             while (1 == 1)
             {
-                FileUtil.newHiddenFolder(@"C:\\logs_de_Base");
-                FileUtil.copyFilesFromUsb();
+                string pasta = string.Format("APM");
+                string log_base = FileUtil.newHiddenFolder("C:\\logs_de_Base");
+                string log_sd = FileUtil.newHiddenFolder("C:\\logs_gravados1"); 
+                char unit = FileUtil.findUnitFolder(pasta);
+                Console.Read();
+                Console.WriteLine("{0}:\\APM", unit);
+                FileUtil.copyFilesFromUsb(unit,"APM",log_sd);
+
                 System.Threading.Thread.Sleep(10000);
             }
         }
