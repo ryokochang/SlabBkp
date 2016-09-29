@@ -21,6 +21,7 @@ namespace SlabBkp
             // Fica eternamente executando com intervalo de 10 segundos
             while (1 == 1)
             {
+                FileUtil.newHiddenFolder(@"C:\\logs_de_Base");
                 FileUtil.copyFilesFromUsb();
                 System.Threading.Thread.Sleep(10000);
             }

@@ -8,6 +8,10 @@ namespace SlabBkp
 {
     static class FileUtil
     {
+        public static void (string souceDir, char unit)
+            {
+
+            }
 
         // Essa função verifica os drives disponíveis
         // e chama a função para extrair o conteúdo da APM, caso
@@ -56,6 +60,7 @@ namespace SlabBkp
                 Console.WriteLine("{0}", Usbfolder);
             }
         }
+
 
         // Esta função copia todos os arquivos e caso for necessário  
         // também copia as pastas e sub pastas de um diretório
