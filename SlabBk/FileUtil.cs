@@ -6,10 +6,11 @@ using System.IO;
 
 namespace SlabBkp
 {
-    static class FileUtil
+    class FileUtil
     {
+
         // ve se a pasta existe se não cria a pasta oculta e retorna o diretorio.
-        public static string newHiddenFolder (string sourceDir)
+        public string newHiddenFolder (string sourceDir)
             {
                 if (!System.IO.Directory.Exists(sourceDir))
                 {
@@ -23,7 +24,7 @@ namespace SlabBkp
         }
 
         //função que verificar se o diretorio existem em todas as unidades e retorna o a letra da unidade caso o diretorio exista, caso não exista retorna A <- unidade que não existe.
-        public static char findUnitFolder(string sourceDir)
+        public char findUnitFolder(string sourceDir)
         {
             char[] Unidade = new Char[23] {'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K',
                                            'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S',
@@ -32,11 +33,8 @@ namespace SlabBkp
             for (int i = 0; i < 23; i++)
             {
                 string Usbfolder = String.Format("{0}:\\{1}", Unidade[i], sourceDir);
-                Console.WriteLine("{0}:\\{1}", Unidade[i], sourceDir);
-
                 if (System.IO.Directory.Exists(Usbfolder))
                 {
-                    Console.WriteLine("{0}", Unidade[i]);
                     return Unidade[i];
                 }
 
@@ -49,7 +47,7 @@ namespace SlabBkp
         // ela exista. 
         //
         // Os drives procurados são de D - Z
-        public static void copyFilesFromUsb(char unit, string folderName, string newSource)
+        public void copyFilesFromUsb(char unit, string folderName, string newSource)
         {
             string rootFolder = string.Format("{0}:\\{1}", unit, folderName);
             Console.WriteLine("{0}", rootFolder);
@@ -64,22 +62,6 @@ namespace SlabBkp
                 DirectoryCopy(rootFolder, novaPasta, true);
             }
         }
-            /*
-                        string file = String.Format("{0}:\\{0}\\LOGS\\1.BIN", unit, folderName);
-                        FileInfo file_info = new FileInfo(file);
-                        string novoNome = file_info.CreationTime.ToString("dd_MM_yyyy-HH_mm_ss"); //pega a data de criação do arquivo
-
-                                Console.WriteLine("pasta existe e vai ser copiada");
-
-                                string Newfolder = String.Format("{0}:\\{0}\\{0}", unit, newSource, novoNome);
-                                Console.WriteLine("{0}", novoNome);
-                                if (System.IO.Directory.Exists(Newfolder))
-                                {
-                                    System.IO.Directory.CreateDirectory(newSource); //cria a nova pasta no C
-                                    FileUtil.DirectoryCopy(folderName, newSource, true); // chama a funcao DirectoryCopy
-                                }
-                            Console.WriteLine("{0}", folderName);
-            */
         
         // Esta função copia todos os arquivos e caso for necessário  
         // também copia as pastas e sub pastas de um diretório
@@ -89,7 +71,7 @@ namespace SlabBkp
         // @sourceDirName - Diretório destino de onde os arquivos serão copiados
         // @destDirName - Diretório destino para onde os arquivo vão
         // @copySubDirs - Booleana true or false para copiar os subdiretorios
-        public static void DirectoryCopy(string sourceDirName, string destDirName, bool copySubDirs)
+        public void DirectoryCopy(string sourceDirName, string destDirName, bool copySubDirs)
         {
             var dir = new DirectoryInfo(sourceDirName);
             var dirs = dir.GetDirectories();

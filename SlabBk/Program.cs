@@ -17,22 +17,23 @@ namespace SlabBkp
     {
         static void Main(string[] args)
         {
-
-            // Fica eternamente executando com intervalo de 10 segundos
+            FileUtil fileManager = new FileUtil();
+            // criação das pastas e configuração
+                string pasta = string.Format("APM"); // pasta que vai ser verificada e copiada
+                string log_base = fileManager.newHiddenFolder("C:\\logs_de_Base"); // pasta de backup de log de base
+                string log_sd = fileManager.newHiddenFolder("C:\\logs_gravados1"); //pasta de backpup de log do SD
+            
+            // Fica eternamente executando com intervalo de 5 segundos
             while (1 == 1)
             {
-                string pasta = string.Format("APM");
-                string log_base = FileUtil.newHiddenFolder("C:\\logs_de_Base");
-                string log_sd = FileUtil.newHiddenFolder("C:\\logs_gravados1"); 
-                char unit = FileUtil.findUnitFolder(pasta);
-                Console.Read();
-                Console.WriteLine("{0}:\\APM", unit);
-                FileUtil.copyFilesFromUsb(unit,"APM",log_sd);
+                char unit = fileManager.findUnitFolder(pasta);
+                if (unit != 'A')
+                {
+                    fileManager.copyFilesFromUsb(unit, "APM", log_sd);
+                }
 
-                System.Threading.Thread.Sleep(10000);
+                System.Threading.Thread.Sleep(5000);
             }
         }
-
-
     }
 }
