@@ -19,19 +19,27 @@ namespace SlabBkp
         {
             FileUtil fileManager = new FileUtil();
             // criação das pastas e configuração
-                string pasta = string.Format("APM"); // pasta que vai ser verificada e copiada
-                string log_base = fileManager.newHiddenFolder("C:\\logs_de_Base"); // pasta de backup de log de base
-                string log_sd = fileManager.newHiddenFolder("C:\\logs_gravados1"); //pasta de backpup de log do SD
-            
+            string pasta = "APM"; // pasta que vai ser verificada e copiada
+            string log_base = fileManager.newHiddenFolder(@"C:\logs de Base"); // pasta de backup de log de base
+            string log_sd = fileManager.newHiddenFolder(@"C:\logs gravados"); //pasta de backpup de log do SD
+            // pega o caminho do usuario e transforma em uma string
+            string path = Directory.GetParent(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)).FullName;
+            if (Environment.OSVersion.Version.Major >= 6)
+            {
+                path = Directory.GetParent(path).ToString();
+            }
+            string log_folder = string.Format(@"{0}\Documents\Mission Planner\logs", path);
+            // função que mantem o backup da pasta log atualizado
+            // recebe o diretório da pasta log do mission planner e recebe a pasta de back dos logs
+            fileManager.watch(log_folder,log_base);
             // Fica eternamente executando com intervalo de 5 segundos
-            while (1 == 1)
+            while (true)
             {
                 char unit = fileManager.findUnitFolder(pasta);
                 if (unit != 'A')
                 {
                     fileManager.copyFilesFromUsb(unit, "APM", log_sd);
                 }
-
                 System.Threading.Thread.Sleep(5000);
             }
         }

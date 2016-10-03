@@ -3,22 +3,31 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.IO;
+using System.Runtime.InteropServices;
+using System.Text.RegularExpressions;
+using Microsoft.Synchronization;
+using Microsoft.Synchronization.Files;
+using Microsoft.Synchronization.FeedSync;
+using Microsoft.Synchronization.Data;
+
+
 
 namespace SlabBkp
 {
     class FileUtil
     {
-
+        string fullPath;
+        string destinationPath;
         // ve se a pasta existe se não cria a pasta oculta e retorna o diretorio.
-        public string newHiddenFolder (string sourceDir)
+        public string newHiddenFolder(string sourceDir)
+        {
+            if (!System.IO.Directory.Exists(sourceDir))
             {
-                if (!System.IO.Directory.Exists(sourceDir))
-                {
                 System.IO.Directory.CreateDirectory(sourceDir);
                 DirectoryInfo diretorio = Directory.CreateDirectory(sourceDir);
                 diretorio.Attributes = FileAttributes.Hidden;
                 return sourceDir;
-                }
+            }
             return sourceDir;
 
         }
@@ -59,12 +68,12 @@ namespace SlabBkp
             if (!System.IO.Directory.Exists(novaPasta))
             {
                 System.IO.Directory.CreateDirectory(novaPasta);
-                DirectoryCopy(rootFolder, novaPasta, true);
+                File.Copy(rootFolder, novaPasta);
+                //DirectoryCopy(rootFolder, novaPasta, true);
             }
         }
-        
+
         // Esta função copia todos os arquivos e caso for necessário  
-        // também copia as pastas e sub pastas de um diretório
         //para um destino
         //
         // Parâmetros: 
@@ -119,5 +128,26 @@ namespace SlabBkp
                 DirectoryCopy(subdir.FullName, temppath, copySubDirs);
             }
         }
+
+        /////////////////////////////////////////////////////////////////////////////////////     
+        public void watch(string path, string destination)
+        {
+            this.fullPath = path;
+            this.destinationPath = destination;
+            FileSystemWatcher watcher = new FileSystemWatcher();
+            watcher.Path = path;
+            watcher.NotifyFilter = NotifyFilters.LastWrite;
+            watcher.Filter = "*.*";
+            watcher.Changed += new FileSystemEventHandler(OnChanged);
+            watcher.EnableRaisingEvents = true;
+            
+        }
+        public void OnChanged(object source, FileSystemEventArgs e)
+        {
+            DirectoryCopy(fullPath, destinationPath, true);
+            Console.WriteLine(e.FullPath);
+        }
+           
+        /////////////////////////////////////////////////////////////////////////////////////
     }
 }

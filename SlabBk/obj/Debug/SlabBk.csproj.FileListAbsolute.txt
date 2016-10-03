@@ -16,3 +16,13 @@ C:\Users\Alex Chang\Documents\GitHub\SlabBkp\SlabBk\bin\Debug\SlabBkp.exe
 C:\Users\Alex Chang\Documents\GitHub\SlabBkp\SlabBk\bin\Debug\SlabBkp.pdb
 C:\Users\Alex Chang\Documents\GitHub\SlabBkp\SlabBk\obj\Debug\SlabBkp.exe
 C:\Users\Alex Chang\Documents\GitHub\SlabBkp\SlabBk\obj\Debug\SlabBkp.pdb
+C:\Users\Alex Chang\Documents\GitHub\SlabBkp\SlabBk\bin\Debug\Microsoft.Synchronization.Data.dll
+C:\Users\Alex Chang\Documents\GitHub\SlabBkp\SlabBk\bin\Debug\Microsoft.Synchronization.Data.resources.dll
+C:\Users\Alex Chang\Documents\GitHub\SlabBkp\SlabBk\bin\Debug\Microsoft.Synchronization.Data.Server.dll
+C:\Users\Alex Chang\Documents\GitHub\SlabBkp\SlabBk\bin\Debug\Microsoft.Synchronization.dll
+C:\Users\Alex Chang\Documents\GitHub\SlabBkp\SlabBk\bin\Debug\Microsoft.Synchronization.Files.dll
+C:\Users\Alex Chang\Documents\GitHub\SlabBkp\SlabBk\bin\Debug\Microsoft.Synchronization.MetadataStorage.dll
+C:\Users\Alex Chang\Documents\GitHub\SlabBkp\SlabBk\bin\Debug\pt\Microsoft.Synchronization.resources.dll
+C:\Users\Alex Chang\Documents\GitHub\SlabBkp\SlabBk\bin\Debug\pt\Microsoft.Synchronization.Data.resources.dll
+C:\Users\Alex Chang\Documents\GitHub\SlabBkp\SlabBk\bin\Debug\pt\Microsoft.Synchronization.Files.resources.dll
+C:\Users\Alex Chang\Documents\GitHub\SlabBkp\SlabBk\bin\Debug\pt\Microsoft.Synchronization.MetadataStorage.resources.dll
