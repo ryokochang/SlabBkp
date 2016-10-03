@@ -25,9 +25,7 @@ namespace SlabBkp
             // pega o caminho do usuario e transforma em uma string
             string path = Directory.GetParent(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)).FullName;
             if (Environment.OSVersion.Version.Major >= 6)
-            {
                 path = Directory.GetParent(path).ToString();
-            }
             string log_folder = string.Format(@"{0}\Documents\Mission Planner\logs", path);
             // função que mantem o backup da pasta log atualizado
             // recebe o diretório da pasta log do mission planner e recebe a pasta de back dos logs
